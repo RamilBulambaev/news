@@ -4,17 +4,19 @@ import styles from "./Main.module.css";
 import { getNews } from "../api/apiNews";
 import { useState } from "react";
 import NewsList from "../components/NewsList/NewsList";
+import Skeleton from "../components/Skeleton/Skeleton";
 
 function Main() {
   const [news, setNews] = useState([]);
+  const [isLoader, setIsLoader] = useState(true);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
+        setIsLoader(true);
         const response = await getNews();
-        console.log(response);
-
         setNews(response.news);
+        setIsLoader(false);
       } catch (error) {
         console.log(error);
       }
@@ -24,8 +26,16 @@ function Main() {
 
   return (
     <main className={styles.main}>
-      {news.length > 0 ? <NewsBanner item={news[5]} /> : null}
-      <NewsList news={news} />
+      {news.length > 0 && !isLoader ? (
+        <NewsBanner item={news[5]} />
+      ) : (
+        <Skeleton type={"banner"} count={1} />
+      )}
+      {!isLoader ? (
+        <NewsList news={news} />
+      ) : (
+        <Skeleton type={"item"} count={10} />
+      )}
     </main>
   );
 }
