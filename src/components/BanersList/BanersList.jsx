@@ -12,6 +12,6 @@ function BanersList({ banners }) {
   );
 }
 
-const BannersListWithSkeleton = withSkeleton(BanersList, "banner", 10, "row");
+const BannersListWithSkeleton = withSkeleton(BanersList, "banner", 5, "row");
 
 export default BannersListWithSkeleton;
