@@ -1,6 +1,12 @@
+import { IFilters } from "../../interfaces";
 import styles from "./Search.module.css";
 
-function Search({ keywords, setKeywords }) {
+interface Props {
+  keywords: string;
+  setKeywords: (keywords: string) => void;
+}
+
+function Search({ keywords, setKeywords }: Props) {
   return (
     <div className={styles.search}>
       <input
