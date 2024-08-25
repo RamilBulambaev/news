@@ -1,6 +1,10 @@
 import styles from "./Image.module.css";
 
-function Image({ image }) {
+interface Props {
+  image: string;
+}
+
+function Image({ image }: Props) {
   return (
     <div className={styles.wrapper}>
       {image ? <img src={image} alt="news" className={styles.image} /> : null}
