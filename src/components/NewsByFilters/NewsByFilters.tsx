@@ -42,7 +42,11 @@ function NewsByFilters() {
 
   return (
     <section className={styles.section}>
-      <NewsFilters filters={filters} changeFilter={changeFilter} />
+      <NewsFilters
+      
+        filters={filters}
+        changeFilter={changeFilter}
+      />
 
       <PaginationWrapper
         top

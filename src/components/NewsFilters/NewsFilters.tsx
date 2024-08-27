@@ -19,7 +19,7 @@ function NewsFilters({ filters, changeFilter }: Props) {
   return (
     <div className={styles.filters}>
       {dataCategories ? (
-        <Slider>
+        <Slider >
           <Categories
             categories={dataCategories.categories}
             setSelectedCategory={(category) =>
